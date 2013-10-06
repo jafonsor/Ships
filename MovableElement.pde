@@ -1,4 +1,4 @@
-class MovableElement {
+class MovableElement implements Element {
   private float x = 0;
   private float y = 0;
   private float angle = 0;
