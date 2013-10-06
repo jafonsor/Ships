@@ -1,1 +1,3 @@
-class Element
+interface Element {
+  public void draw();
+}

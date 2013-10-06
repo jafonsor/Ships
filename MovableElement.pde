@@ -1,8 +1,8 @@
 class MovableElement {
-  private int x;
-  private int y;
-  private float degree;
-  private Element element;
+  private int x = 0;
+  private int y = 0;
+  private float degree = 0;
+  private Element element = null;
   
   public MovableElement(Element element) {
     this.element = element;
@@ -13,14 +13,15 @@ class MovableElement {
     this.y = y;
   }
   
-  public void rotate(degree) {
+  public void rotate(float degree) {
     this.degree += degree;
   }
   
   public void draw() {
     pushMatrix();
-    rotate(degree);
     translate(x,y);
+    rotate(degree);
+    
     element.draw();
     popMatrix();
   }
