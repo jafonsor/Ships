@@ -2,21 +2,37 @@ import java.util.List;
 import java.util.LinkedList;
 
 List<Integer> a = new LinkedList<Integer>();
-MovableElement movable;
+Ship ship;
+int lastTime;
 
 public void setup() {
-  size(400,400);
-  Element square = new Element() {
+  size(600,600);
+  Element shipDrawing = new Element() {
     @Override
     public void draw() {
-      rect(0,0,50,50);
+      triangle(20,-20 ,0,20 ,-20,-20);
     }
   };
-  movable = new MovableElement(square);
+  ship = new Ship(shipDrawing);
+  ship.moveTo( 150, 150);
+  lastTime = millis();
 }
 
 public void draw() {
   background(100,100,100);
-  movable.moveTo(mouseX,mouseY);
-  movable.draw();
+  ship.animate((millis() - lastTime)/10);
+  lastTime = millis();
+  ship.draw();
+  
+  if(keyPressed) {
+    if(key == 'a')
+      ship.turn(radians(-5));
+    else
+      ship.turn(radians(5));
+  }
+}
+
+public void keyPressed() {
+  System.out.println("key pressed: " + key);
+
 }
